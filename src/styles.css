@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Bellefair&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+:root {
+  --bellefair: 'Bellefair', serif;
+  --blue-900: #0b0d17;
+  --blue-300: #d0d6f9;
+}
+
+@theme inline {
+  --font-bellefair: var(--bellefair);
+  --color-blue-900: var(--blue-900);
+  --color-blue-300: var(--blue-300);
+}
+
+@layer base {
+  body {
+    @apply font-bellefair;
+  }
+}
