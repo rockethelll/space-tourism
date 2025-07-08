@@ -4,7 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-crew',
   imports: [],
   templateUrl: './crew.html',
-  styleUrl: './crew.css'
 })
 export class Crew {
 

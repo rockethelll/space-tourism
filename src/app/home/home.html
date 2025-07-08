@@ -1,4 +1,20 @@
 <div
   class="bg-[url('/images/home/background-home-mobile.jpg')] md:bg-[url('/images/home/background-home-tablet.jpg')] lg:bg-[url('/images/home/background-home-desktop.jpg')] bg-cover bg-center min-h-screen h-full p-6 pt-22">
-  test
+  <div class="flex flex-col items-center justify-center mt-6 px-6">
+    <div class="flex flex-col items-center justify-center">
+      <p  class="font-barlow-condensed uppercase text-blue-300 tracking-[2px]">So, you want to travel
+        to
+      </p>
+      <p class="uppercase my-6 text-[80px]">Space</p>
+      <p class="font-barlow-condensed text-blue-300 text-center leading-[1.8]">
+        Let’s face it; if you want to go to space, you might as well genuinely go to
+        outer space and not hover kind of on the edge of it. Well sit back, and relax
+        because we’ll give you a truly out of this world experience!
+      </p>
+    </div>
+    <div class="flex items-center justify-center mt-30">
+      <a [routerLink]="'/destination'"
+        class="bg-white text-blue-900 uppercase w-[144px] h-[144px] flex items-center justify-center rounded-full transition-shadow hover:ring-white/10 hover:ring-[44px]">Explore</a>
+    </div>
+  </div>
 </div>

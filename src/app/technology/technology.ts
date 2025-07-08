@@ -4,7 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-technology',
   imports: [],
   templateUrl: './technology.html',
-  styleUrl: './technology.css'
 })
 export class Technology {
 

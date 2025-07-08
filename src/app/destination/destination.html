@@ -1,4 +1,19 @@
 <div
   class="bg-[url('/images/destination/background-destination-mobile.jpg')] md:bg-[url('/images/destination/background-destination-tablet.jpg')] lg:bg-[url('/images/destination/background-destination-desktop.jpg')] bg-cover bg-center min-h-screen h-full p-6 pt-22">
-  Destination
+  01 Pick your destination
+  <nav class="flex justify-center items-center gap-4 my-10">
+    @for (destination of destinations; let i = $index; track destination.name) {
+    <button class="uppercase text-white/50 hover:text-white" [class.active]="i === selectedDestination"
+      (click)="setSelectedDestination(i)" [ngClass]="isActive(destination.name) ? 'border-b-white border-b-4' : ''">
+      {{ destination.name }}
+    </button>
+    }
+  </nav>
+
+  <div>
+    <h2>{{ destinations[selectedDestination].name }}</h2>
+    <p>{{ destinations[selectedDestination].description }}</p>
+    <p>Distance: {{ destinations[selectedDestination].distance }}</p>
+    <p>Travel time: {{ destinations[selectedDestination].travel }}</p>
+  </div>
 </div>

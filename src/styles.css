@@ -1,14 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Bellefair&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import "tailwindcss";
 
 :root {
   --bellefair: "Bellefair", serif;
+  --barlow-condensed: "Barlow Condensed", sans-serif;
   --blue-900: #0b0d17;
   --blue-300: #d0d6f9;
 }
 
 @theme inline {
   --font-bellefair: var(--bellefair);
+  --font-barlow-condensed: var(--barlow-condensed);
   --color-blue-900: var(--blue-900);
   --color-blue-300: var(--blue-300);
 }

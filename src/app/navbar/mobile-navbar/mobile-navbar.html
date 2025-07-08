@@ -7,7 +7,7 @@
 </div>
 
 <div
-  class="flex fixed top-0 right-0 z-50 flex-col w-3/4 h-screen transition-transform duration-300 ease-in-out transform"
+  class="flex fixed top-0 right-0 z-50 flex-col w-[255px] h-screen transition-transform duration-300 ease-in-out transform"
   [ngClass]="isMenuOpen ? 'translate-x-0' : 'translate-x-full'">
   <!-- Blur effect -->
   <div class="absolute inset-0 w-full h-full backdrop-blur-xl"></div>
@@ -18,8 +18,9 @@
     <!-- Navbar links -->
     <ul class="flex flex-col gap-8 text-white text-start tracking-[2px] mt-[135px]">
       @for (link of links; track link.href) {
-      <li [ngClass]="isActive(link.href) ? 'border-r-white border-r-3' : ''">
-        <a [routerLink]="link.href">
+      <li class="hover:border-r-white/50 hover:border-r-4"
+        [ngClass]="isActive(link.href) ? 'border-r-white border-r-4' : ''">
+        <a class="block w-full h-full" [routerLink]="link.href">
           <span class="font-[900] pr-3">{{ link.number }}</span>
           <span class="uppercase text-white/70">{{ link.label }}</span>
         </a>
