@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { NAVBAR_LINKS } from '../navbar-links';
-import { Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { NgClass } from '@angular/common';
+import { NavbarService } from '../navbar.service';
 
 @Component({
   selector: 'app-mobile-navbar',
@@ -12,7 +13,7 @@ export class MobileNavbar {
   isMenuOpen: boolean = false;
   links = NAVBAR_LINKS;
 
-  constructor(private router: Router) {}
+  constructor(private navbarService: NavbarService) {}
 
   openMenu() {
     this.isMenuOpen = true;
@@ -23,8 +24,6 @@ export class MobileNavbar {
   }
 
   isActive(href: string): boolean {
-    const currentUrl = this.router.url === '/' ? '/home' : this.router.url;
-    const linkUrl = href === '/' ? '/home' : href;
-    return currentUrl.startsWith(linkUrl);
+    return this.navbarService.isActive(href);
   }
 }

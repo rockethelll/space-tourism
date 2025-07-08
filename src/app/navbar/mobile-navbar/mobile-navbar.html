@@ -16,22 +16,16 @@
     <img [src]="'images/shared/icon-close.svg'" alt="close" class="w-6 h-[21px] cursor-pointer fixed top-8 right-6 z-50"
       (click)="closeMenu()" />
     <!-- Navbar links -->
-    <ul class="flex flex-col gap-8 text-white text-start tracking-[2px] mt-[135px]">
+    <ul class="flex flex-col gap-8 text-white text-start mt-[135px]">
       @for (link of links; track link.href) {
       <li class="hover:border-r-white/50 hover:border-r-4"
         [ngClass]="isActive(link.href) ? 'border-r-white border-r-4' : ''">
-        <a class="block w-full h-full" [routerLink]="link.href">
-          <span class="font-[900] pr-3">{{ link.number }}</span>
-          <span class="uppercase text-white/70">{{ link.label }}</span>
+        <a class="block w-full h-full font-barlow-condensed" [routerLink]="link.href">
+          <span class="pr-3 tracking-[2.7px]">{{ link.number }}</span>
+          <span class="uppercase text-white/70 tracking-[2px]">{{ link.label }}</span>
         </a>
       </li>
       }
     </ul>
   </div>
 </div>
-
-<!-- <button (click)="isMenuOpen = !isMenuOpen">Toggle Menu</button>
-<div class="fixed top-0 right-0 w-1/2 h-screen bg-red-500 transition-transform duration-300 transform"
-  [ngClass]="isMenuOpen ? 'translate-x-0' : 'translate-x-full'">
-  MENU
-</div> -->
