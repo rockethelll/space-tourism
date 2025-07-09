@@ -1,13 +1,18 @@
-<div class="flex justify-between items-center w-full h-24">
+<div class="flex relative justify-between items-center w-full h-24">
   <div class="flex-shrink-0 p-6">
     <img [src]="'images/shared/logo.svg'" alt="logo" class="w-12 h-12" />
   </div>
 
+  <!-- Divider -->
+  <div class="hidden lg:block absolute top-1/2 left-[120px] right-[686px] h-[1px] bg-[#979797] z-1000 -translate-y-1/2">
+  </div>
+
   <!-- Navbar links -->
-  <div class="flex justify-end items-center pr-10 pl-[88px] bg-white/5 h-full backdrop-blur-xl">
+  <div class="flex justify-end items-center pr-10 pl-[88px] bg-white/5 h-full backdrop-blur-lg z-10 lg:w-[736px]">
     <ul class="flex gap-8 h-full text-white">
       @for (link of links; track link.href) {
-      <li class="flex items-center h-full border-b-4 transition-all duration-300 border-b-transparent" [ngClass]="isActive(link.href) ? 'border-b-white border-b-4' : 'hover:border-b-white/50'">
+      <li class="flex items-center h-full border-b-4 transition-all duration-300 border-b-transparent"
+        [ngClass]="isActive(link.href) ? 'border-b-white border-b-4' : 'hover:border-b-white/50'">
         <a class="block font-barlow-condensed" [routerLink]="link.href">
           <span class="pr-3 tracking-[2.7px]">{{ link.number }}</span>
           <span class="uppercase text-white/70 tracking-[2px]">{{ link.label }}</span>

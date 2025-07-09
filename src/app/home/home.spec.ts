@@ -1,23 +1,34 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { HomeComponent } from './home';
+import { render, screen } from '@testing-library/angular';
+import userEvent from '@testing-library/user-event';
+import '@testing-library/jest-dom';
 
 describe('Home', () => {
-  let component: HomeComponent;
-  let fixture: ComponentFixture<HomeComponent>;
+  it('should render the home page', async () => {
+    const user = userEvent.setup();
+    await render(HomeComponent);
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [HomeComponent]
-    })
-    .compileComponents();
+    const exploreButton = screen.getByRole('link', { name: 'Explore' });
+    let isHovered = false;
 
-    fixture = TestBed.createComponent(HomeComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    exploreButton.addEventListener('mouseover', () => {
+      isHovered = true;
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+    exploreButton.addEventListener('mouseout', () => {
+      isHovered = false;
+    });
+
+    expect(isHovered).toBeFalsy();
+
+    await user.hover(exploreButton);
+    expect(isHovered).toBeTruthy();
+
+    await user.unhover(exploreButton);
+    expect(isHovered).toBeFalsy();
+
+    expect(screen.getByText('Space')).toBeInTheDocument();
+    expect(exploreButton).toBeInTheDocument();
+    expect(exploreButton).toHaveAttribute('href', '/destination');
   });
 });
