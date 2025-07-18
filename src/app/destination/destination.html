@@ -1,49 +1,57 @@
 <div
   class="bg-[url('/images/destination/background-destination-mobile.jpg')] md:bg-[url('/images/destination/background-destination-tablet.jpg')] lg:bg-[url('/images/destination/background-destination-desktop.jpg')] bg-cover bg-center min-h-screen h-full p-6 pt-22">
 
-  <section class="flex flex-col p-6">
-    <!-- left side -->
-    <div class="flex flex-col items-center justify-center ">
-      <h1 class="text-center uppercase font-barlow-condensed"><span class="mr-6 text-white/25">01</span> Pick your
-        destination</h1>
-      <img [src]="destinations[selectedDestination].image" alt="destinations[selectedDestination].name"
-        class="pt-12 h-[150px]" />
-    </div>
+  <section class="flex flex-col p-6 md:px-0 xl:max-w-[1110px] mx-auto">
+    <h1 class="text-center uppercase md:text-left font-barlow-condensed md:text-xl md:pt-10"><span
+        class="mr-6 text-white/25">01</span>
+      Pick your
+      destination</h1>
 
-    <!-- right side -->
-    <div class="pt-14">
-      <nav class="flex gap-4 justify-evenly items-center h-8 font-barlow-condensed text-[14px] tracking-[2px]">
-        <!-- nav links -->
-        @for (destination of destinations; let i = $index; track destination.name) {
-        <ul class="flex gap-4 h-full">
-          <li class="h-full">
-            <button
-              class="h-full text-blue-300 uppercase border-b-4 transition-all duration-300 cursor-pointer hover:text-white border-b-transparent"
-              [class.active]="i === selectedDestination" (click)="setSelectedDestination(i)"
-              [ngClass]="isActive(destination.name) ? 'border-b-white border-b-4 text-white' : 'hover:border-b-white/50'">
-              {{ destination.name }}
-            </button>
-          </li>
-        </ul>
-        }
-      </nav>
+    <div class="flex flex-col items-center xl:flex-row xl:pt-20 xl:gap-4">
+      <!-- left side -->
+      <div class="w-full xl:w-1/2">
+        <div class="flex justify-center">
+          <img [src]="destinations[selectedDestination].image" alt="destinations[selectedDestination].name"
+            class="pt-12 h-[170px] md:h-[330px] xl:h-[480px] md:pt-16" />
+        </div>
+      </div>
 
-      <!-- Content -->
-      <div class="flex flex-col items-center justify-center pt-6">
-        <h2 class="text-[56px]">{{ destinations[selectedDestination].name }}</h2>
-        <p class="text-blue-300 font-barlow-condensed text-[15px] leading-[1.8] text-center pt-4">{{
-          destinations[selectedDestination].description }}</p>
+      <!-- right side -->
+      <div class="xl:w-1/2 xl:flex xl:flex-col xl:items-start">
+        <nav
+          class="mt-14 md:mt-[74px] flex gap-8 justify-evenly items-center h-8 font-barlow-condensed text-[14px] md:text-base tracking-[2px] md:justify-center">
+          <!-- nav links -->
+          @for (destination of destinations; let i = $index; track destination.name) {
+          <ul class="flex h-full">
+            <li class="h-full">
+              <button
+                class="h-full text-blue-300 uppercase transition-all duration-300 border-b-4 cursor-pointer hover:text-white border-b-transparent"
+                [class.active]="i === selectedDestination" (click)="setSelectedDestination(i)"
+                [ngClass]="isActive(destination.name) ? 'border-b-white border-b-4 text-white' : 'hover:border-b-white/50'">
+                {{ destination.name }}
+              </button>
+            </li>
+          </ul>
+          }
+        </nav>
+        <!-- Content -->
+        <div class="flex flex-col items-center justify-center pt-6 max-w-[514px] xl:items-start">
+          <h2 class="text-[56px] md:text-[80px] xl:text-8xl xl:py-6">{{ destinations[selectedDestination].name }}</h2>
+          <p class="text-blue-300 font-barlow-condensed text-[15px] md:text-base leading-[1.8] text-center xl:text-left pt-4 xl:text-[18px]">
+            {{
+            destinations[selectedDestination].description }}</p>
 
-        <hr class="w-full h-[1px] bg-[#979797] my-6" />
+          <hr class="w-full h-[1px] bg-[#979797] my-6 xl:my-10" />
 
-        <div class="flex flex-col gap-6">
-          <div class="flex flex-col items-center gap-3">
-            <p class="font-barlow-condensed text-[14px] text-blue-300">AVG. DISTANCE</p>
-            <p class="text-[26px] uppercase">{{ destinations[selectedDestination].distance }}</p>
-          </div>
-          <div class="flex flex-col items-center gap-3">
-            <p class="font-barlow-condensed text-[14px] text-blue-300">EST. TRAVEL TIME</p>
-            <p class="text-[26px] uppercase">{{ destinations[selectedDestination].travel }}</p>
+          <div class="flex flex-col w-full gap-6 md:flex-row">
+            <div class="flex flex-col items-center gap-3 xl:items-start md:w-1/2">
+              <p class="font-barlow-condensed text-[14px] text-blue-300">AVG. DISTANCE</p>
+              <p class="text-[26px] uppercase">{{ destinations[selectedDestination].distance }}</p>
+            </div>
+            <div class="flex flex-col items-center gap-3 md:w-1/2 xl:items-start ">
+              <p class="font-barlow-condensed text-[14px] text-blue-300">EST. TRAVEL TIME</p>
+              <p class="text-[26px] uppercase">{{ destinations[selectedDestination].travel }}</p>
+            </div>
           </div>
         </div>
       </div>
