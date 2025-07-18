@@ -1,4 +1,4 @@
-name: Generate a build and push to another branch
+name: Build and Deploy to Hostinger
 
 on:
   push:
@@ -6,11 +6,11 @@ on:
       - main
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    name: Build and Push
+    name: Build and Deploy
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -21,12 +21,12 @@ jobs:
 
       # Step to run tests
       # - name: Test
-        # run: npm run test
+      # run: npm run test
 
-      - name: Build
+      - name: Build for production
         run: npm run build
 
-      # Step to create the branch if it doesn't exist
+      # Step to create the build branch if it doesn't exist
       - name: Ensure build branch exists
         run: |
           git fetch origin
@@ -39,6 +39,7 @@ jobs:
           fi
         shell: bash
 
+      # Push build files to build branch
       - name: Push to build branch
         uses: s0/git-publish-subdir-action@develop
         env:
@@ -46,4 +47,18 @@ jobs:
           BRANCH: build
           FOLDER: dist
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          MESSAGE: 'Build: ({sha}) {msg}' # The commit message
+          MESSAGE: "Build: ({sha}) {msg}" # The commit message
+
+      # Deploy to Hostinger via FTP
+      - name: Deploy to Hostinger
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.HOSTINGER_FTP_SERVER }}
+          username: ${{ secrets.HOSTINGER_FTP_USERNAME }}
+          password: ${{ secrets.HOSTINGER_FTP_PASSWORD }}
+          local-dir: ./dist/space-tourism-website-project/browser/
+          server-dir: /public_html/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
