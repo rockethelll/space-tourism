@@ -1,5 +1,7 @@
 <div class="flex justify-between items-center w-full">
-  <img [src]="'images/shared/logo.svg'" alt="logo" class="w-10 h-10" />
+  <a routerLink="/">
+    <img [src]="'images/shared/logo.svg'" alt="logo" class="w-10 h-10" />
+  </a>
 
   @if (!isMenuOpen) {
   <img [src]="'images/shared/icon-hamburger.svg'" alt="menu" class="w-6 h-[21px] cursor-pointer" (click)="openMenu()" />
@@ -20,7 +22,7 @@
       @for (link of links; track link.href) {
       <li class="hover:border-r-white/50 hover:border-r-4"
         [ngClass]="isActive(link.href) ? 'border-r-white border-r-4' : ''">
-        <a class="block w-full h-full font-barlow-condensed" [routerLink]="link.href">
+        <a class="block w-full h-full font-barlow-condensed" [routerLink]="link.href" (click)="closeMenu()">
           <span class="pr-3 tracking-[2.7px]">{{ link.number }}</span>
           <span class="uppercase text-white/70 tracking-[2px]">{{ link.label }}</span>
         </a>

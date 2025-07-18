@@ -1,6 +1,8 @@
 <div class="flex relative justify-between items-center w-full h-24">
   <div class="flex-shrink-0 p-6">
-    <img [src]="'images/shared/logo.svg'" alt="logo" class="w-12 h-12" />
+    <a routerLink="/">
+      <img [src]="'images/shared/logo.svg'" alt="logo" class="w-12 h-12" />
+    </a>
   </div>
 
   <!-- Divider -->
@@ -8,7 +10,7 @@
   </div>
 
   <!-- Navbar links -->
-  <div class="flex justify-end items-center pr-10 pl-[88px] bg-white/5 h-full backdrop-blur-lg z-10 lg:w-[736px]">
+  <nav class="flex justify-end items-center pr-10 pl-[88px] bg-white/5 h-full backdrop-blur-lg z-10 lg:w-[736px]">
     <ul class="flex gap-8 h-full text-white">
       @for (link of links; track link.href) {
       <li class="flex items-center h-full border-b-4 transition-all duration-300 border-b-transparent"
@@ -20,5 +22,5 @@
       </li>
       }
     </ul>
-  </div>
+  </nav>
 </div>
